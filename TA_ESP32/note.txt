@@ -1,0 +1,63 @@
+
+
+
+//subscribe
+mosquitto_sub -h 44.195.202.69 -t "#" -v
+mosquitto_sub -h 44.195.202.69 -t "wanda/esp32/v1" -v
+
+//publish
+mosquitto_pub -h 44.195.202.69 -t "wanda/esp32/v1" -m "selamat datang di fisika"
+_________________________________________________________
+note : -h(host) -t(topic) -v()
+mqtt_host : test.mosquitto.org
+_________________________________________________________
+
+
+//Database sqlite
+
+buat table
+CREATE TABLE tabel_gyro(id INTEGER PRIMARY KEY AUTOINCREMENT, akselerasi_x VARCHAR(10), akselerasi_y VARCHAR(10), akselerasi_z VARCHAR(10), rotasi_x VARCHAR(10), rotasi_y VARCHAR(10), rotasi_z VARCHAR(10), suhu VARCHAR(10), tanggal DATE, waktu TIME, alat TEXT);
+CREATE TABLE sensors(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(255), value REAL, unit VARCHAR(100), timestamp DATETIME);
+
+
+masukan data
+INSERT INTO tabel_gyro(akselerasi_x, akselerasi_y, akselerasi_z, rotasi_x, rotasi_y, rotasi_z, suhu, tanggal, waktu, alat) values(22.4, 22.4, 22.4, 26.4, 26.4, 26.4, 28.0, date('now'), time('now'), 'Gyro');
+INSERT INTO sensors(id, name, value, unit, timestamp) VALUES(null, 'Temp', 28.5, 'derajat', datetime('now'));
+
+hapus tabel
+DROP TABLE tabel_gyro;
+
+lkasdfnaskjdfbka_gyro_akselerasi_x
+lkasdfnaskjdfbka_gyro_akselerasi_y
+lkasdfnaskjdfbka_gyro_akselerasi_z
+lkasdfnaskjdfbka_gyro_rotasi_x
+lkasdfnaskjdfbka_gyro_rotasi_y
+lkasdfnaskjdfbka_gyro_rotasi_z
+lkasdfnaskjdfbka_gyro_temp
+
+
+####################################################################################
+
+| Long | Lat | Alt | Speed | slope
+
+CREATE TABLE tabel_gps(id INTEGER PRIMARY KEY AUTOINCREMENT, longitude VARCHAR(10), latitude VARCHAR(10), altitude VARCHAR(10), kecepatan VARCHAR(10), gradien VARCHAR(10), tanggal_waktu DATETIME, alat VARCHAR(10));
+
+CREATE TABLE table_data(id INTEGER PRIMARY KEY AUTOINCREMENT, longitude VARCHAR(10), latitude VARCHAR(10), altitude VARCHAR(10), akselerasi_x VARCHAR(10), akselerasi_y VARCHAR(10), akselerasi_z VARCHAR(10), rotasi_x VARCHAR(10), rotasi_y VARCHAR(10), rotasi_z VARCHAR(10), suhu_gyro VARCHAR(10), tanggal DATE, waktu TIME, alat TEXT)
+
+
+
+// Raw altitude in centimeters (i32)
+Serial.print("Raw altitude in centimeters = "); 
+Serial.println(gps.altitude.value()); 
+// Altitude in meters (double)
+Serial.print("Altitude in meters = "); 
+Serial.println(gps.altitude.meters()); 
+// Altitude in miles (double)
+Serial.print("Altitude in miles = "); 
+Serial.println(gps.altitude.miles()); 
+// Altitude in kilometers (double)
+Serial.print("Altitude in kilometers = "); 
+Serial.println(gps.altitude.kilometers()); 
+// Altitude in feet (double)
+Serial.print("Altitude in feet = "); 
+Serial.println(gps.altitude.feet());
